@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel Huang - Terminal Resume</title>
+    <link rel="stylesheet" href="css/terminal.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="terminal-container">
+        <div class="terminal-header">
+            <div class="terminal-controls">
+                <span class="control close"></span>
+                <span class="control minimize"></span>
+                <span class="control maximize"></span>
+            </div>
+            <div class="terminal-title">guest@resume:~$</div>
+        </div>
+        
+        <div class="terminal-body">
+            <div class="terminal-content" id="terminal-content">
+                <div class="ascii-banner" id="ascii-banner"></div>
+                <div class="welcome-message" id="welcome-message"></div>
+                <div class="output" id="output"></div>
+            </div>
+            
+            <div class="input-line" id="input-line">
+                <span class="prompt" id="prompt">guest@resume:~$ </span>
+                <input type="text" 
+                       id="command-input" 
+                       class="command-input" 
+                       autocomplete="off" 
+                       spellcheck="false"
+                       autofocus>
+                <span class="cursor" id="cursor">█</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/daniel-data.js"></script>
+    <script src="js/filesystem.js"></script>
+    <script src="js/typewriter.js"></script>
+    <script src="js/commands.js"></script>
+    <script src="js/terminal.js"></script>
+</body>
+</html>
