@@ -1,0 +1,305 @@
+/* Animations CSS - Typewriter and Terminal Effects */
+
+/* Cursor blinking animation */
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
+}
+
+/* Typewriter effect for text appearing */
+@keyframes typewriter {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+/* Fade in animation for new content */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Slide in from left for prompt */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Glow effect for terminal */
+@keyframes terminalGlow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
+    }
+}
+
+/* Matrix rain effect */
+@keyframes matrixRain {
+    0% {
+        transform: translateY(-100vh);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+/* Typing indicator */
+@keyframes typing {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.3;
+    }
+}
+
+/* Scan line effect */
+@keyframes scanline {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(100vh);
+    }
+}
+
+/* Text reveal effect */
+@keyframes textReveal {
+    0% {
+        clip-path: inset(0 100% 0 0);
+    }
+    100% {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+/* Classes for applying animations */
+.typewriter-effect {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typewriter 0.05s steps(1, end);
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-in;
+}
+
+.slide-in-left {
+    animation: slideInLeft 0.3s ease-out;
+}
+
+.terminal-glow {
+    animation: terminalGlow 3s ease-in-out infinite;
+}
+
+.typing-indicator {
+    animation: typing 1.5s ease-in-out infinite;
+}
+
+.text-reveal {
+    animation: textReveal 0.8s ease-out;
+}
+
+/* Matrix rain columns */
+.matrix-column {
+    position: absolute;
+    top: -100vh;
+    color: #00ff00;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    line-height: 1;
+    animation: matrixRain linear infinite;
+    opacity: 0.7;
+}
+
+/* Scanline effect overlay */
+.scanline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00ff00, transparent);
+    animation: scanline 2s linear infinite;
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.3;
+}
+
+/* CRT monitor effect */
+.crt-effect {
+    position: relative;
+}
+
+.crt-effect::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 255, 0, 0.03) 2px,
+        rgba(0, 255, 0, 0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Glitch effect for easter eggs */
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(-2px, 2px);
+    }
+    40% {
+        transform: translate(-2px, -2px);
+    }
+    60% {
+        transform: translate(2px, 2px);
+    }
+    80% {
+        transform: translate(2px, -2px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+.glitch-effect {
+    animation: glitch 0.3s ease-in-out;
+}
+
+/* Boot sequence animation */
+@keyframes bootSequence {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.boot-sequence {
+    animation: bootSequence 0.8s ease-in-out;
+}
+
+/* Command execution flash */
+@keyframes commandFlash {
+    0% {
+        background: transparent;
+    }
+    50% {
+        background: rgba(0, 255, 0, 0.1);
+    }
+    100% {
+        background: transparent;
+    }
+}
+
+.command-flash {
+    animation: commandFlash 0.2s ease-in-out;
+}
+
+/* Loading dots animation */
+@keyframes loadingDots {
+    0%, 20% {
+        color: transparent;
+    }
+    40% {
+        color: #00ff00;
+    }
+    100% {
+        color: transparent;
+    }
+}
+
+.loading-dots span:nth-child(1) {
+    animation: loadingDots 1.4s ease-in-out infinite;
+}
+
+.loading-dots span:nth-child(2) {
+    animation: loadingDots 1.4s ease-in-out infinite 0.2s;
+}
+
+.loading-dots span:nth-child(3) {
+    animation: loadingDots 1.4s ease-in-out infinite 0.4s;
+}
+
+/* Hover effects */
+.terminal-controls .control {
+    transition: all 0.2s ease;
+}
+
+.terminal-controls .control:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+/* Input focus effect */
+.input-line {
+    transition: all 0.2s ease;
+}
+
+.input-line:focus-within {
+    background: rgba(0, 255, 0, 0.05);
+    border-radius: 3px;
+    padding: 2px 5px;
+    margin: -2px -5px;
+}
+
+/* Smooth scrolling */
+.terminal-body {
+    scroll-behavior: smooth;
+}
+
+/* Performance optimizations */
+.typewriter-effect {
+    will-change: width;
+}
+
+.fade-in {
+    will-change: opacity, transform;
+}
+
+.matrix-column {
+    will-change: transform;
+}
+
+.cursor {
+    will-change: opacity;
+}

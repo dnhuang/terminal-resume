@@ -1,0 +1,361 @@
+/* Responsive CSS - Mobile and Tablet Adaptations */
+
+/* Base responsive behavior */
+@media (max-width: 1200px) {
+    .terminal-container {
+        border-width: 1px;
+        box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
+    }
+    
+    .file-list {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+}
+
+/* Tablet styles */
+@media (max-width: 768px) {
+    body {
+        font-size: 13px;
+    }
+    
+    .terminal-container {
+        border: none;
+        height: 100vh;
+        border-radius: 0;
+    }
+    
+    .terminal-header {
+        padding: 10px 15px;
+        min-height: 44px;
+    }
+    
+    .terminal-title {
+        font-size: 11px;
+    }
+    
+    .terminal-body {
+        padding: 15px;
+    }
+    
+    .ascii-banner {
+        font-size: 10px;
+        line-height: 1.1;
+    }
+    
+    .file-list {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 8px;
+    }
+    
+    .input-line {
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+    
+    .prompt {
+        min-width: fit-content;
+    }
+    
+    .command-input {
+        min-width: 200px;
+    }
+}
+
+/* Mobile styles */
+@media (max-width: 480px) {
+    body {
+        font-size: 12px;
+        line-height: 1.3;
+    }
+    
+    .terminal-header {
+        padding: 8px 12px;
+        min-height: 40px;
+    }
+    
+    .terminal-controls {
+        gap: 6px;
+    }
+    
+    .control {
+        width: 10px;
+        height: 10px;
+    }
+    
+    .terminal-title {
+        font-size: 10px;
+    }
+    
+    .terminal-body {
+        padding: 12px;
+    }
+    
+    .ascii-banner {
+        font-size: 8px;
+        line-height: 1;
+        margin-bottom: 15px;
+    }
+    
+    .welcome-message {
+        margin-bottom: 15px;
+        line-height: 1.4;
+    }
+    
+    .file-list {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+    
+    .input-line {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .prompt {
+        width: 100%;
+    }
+    
+    .command-input {
+        width: 100%;
+        min-width: unset;
+    }
+    
+    .cursor {
+        position: relative;
+        margin-left: 2px;
+    }
+    
+    /* Adjust spacing for mobile */
+    .output-line {
+        margin: 1px 0;
+    }
+    
+    .section-header {
+        margin: 10px 0 8px 0;
+        font-size: 13px;
+    }
+    
+    .project-header {
+        margin: 8px 0 4px 0;
+        font-size: 12px;
+    }
+    
+    /* Touch-friendly controls */
+    .terminal-controls .control {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 320px) {
+    body {
+        font-size: 11px;
+    }
+    
+    .terminal-body {
+        padding: 10px;
+    }
+    
+    .ascii-banner {
+        font-size: 7px;
+        margin-bottom: 10px;
+    }
+    
+    .terminal-title {
+        font-size: 9px;
+    }
+    
+    .prompt {
+        font-size: 11px;
+    }
+    
+    .command-input {
+        font-size: 11px;
+    }
+}
+
+/* Landscape mobile orientation */
+@media (max-height: 500px) and (orientation: landscape) {
+    .terminal-body {
+        padding: 10px 15px;
+    }
+    
+    .ascii-banner {
+        font-size: 9px;
+        margin-bottom: 10px;
+    }
+    
+    .welcome-message {
+        margin-bottom: 10px;
+    }
+    
+    .section-header {
+        margin: 8px 0 5px 0;
+    }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+    .terminal-container {
+        border-width: 0.5px;
+    }
+    
+    .cursor {
+        font-weight: normal;
+    }
+}
+
+/* Dark mode support (already dark, but for system preferences) */
+@media (prefers-color-scheme: dark) {
+    /* Already optimized for dark mode */
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .cursor {
+        animation: none;
+        opacity: 1;
+    }
+    
+    .typewriter-effect {
+        animation: none;
+        width: 100%;
+    }
+    
+    .fade-in {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+    
+    .slide-in-left {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+    
+    .terminal-glow {
+        animation: none;
+    }
+    
+    .matrix-column {
+        animation: none;
+        display: none;
+    }
+    
+    .scanline {
+        animation: none;
+        display: none;
+    }
+    
+    .glitch-effect {
+        animation: none;
+    }
+    
+    .boot-sequence {
+        animation: none;
+        opacity: 1;
+    }
+    
+    .command-flash {
+        animation: none;
+    }
+    
+    .loading-dots span {
+        animation: none;
+        color: #00ff00;
+    }
+}
+
+/* Print styles */
+@media print {
+    .terminal-container {
+        border: 1px solid #000;
+        box-shadow: none;
+        background: #fff;
+        color: #000;
+        page-break-inside: avoid;
+    }
+    
+    .terminal-header {
+        background: #f0f0f0;
+        color: #000;
+        border-bottom: 1px solid #000;
+    }
+    
+    .terminal-controls {
+        display: none;
+    }
+    
+    .cursor {
+        display: none;
+    }
+    
+    .input-line {
+        display: none;
+    }
+    
+    .ascii-banner {
+        color: #000;
+    }
+    
+    .welcome-message,
+    .output,
+    .command-output {
+        color: #000;
+    }
+    
+    .matrix-rain {
+        display: none;
+    }
+    
+    .scanline {
+        display: none;
+    }
+}
+
+/* Accessibility improvements */
+@media (prefers-contrast: high) {
+    .terminal-container {
+        border-color: #ffffff;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+    
+    .prompt,
+    .command-output {
+        color: #ffffff;
+        font-weight: bold;
+    }
+    
+    .cursor {
+        color: #ffffff;
+        background: #00ff00;
+    }
+}
+
+/* Focus management for touch devices */
+@media (hover: none) {
+    .command-input {
+        /* Ensure input stays focused on touch devices */
+        -webkit-user-select: text;
+        user-select: text;
+    }
+    
+    .terminal-controls .control:hover {
+        transform: none;
+        box-shadow: none;
+    }
+    
+    .input-line:focus-within {
+        background: rgba(0, 255, 0, 0.1);
+    }
+}
+
+/* Keyboard navigation improvements */
+@media (any-hover: none) {
+    .terminal-body {
+        -webkit-overflow-scrolling: touch;
+    }
+}
