@@ -185,9 +185,9 @@ AUTOMATION & EFFICIENCY:
                 "experience": {
                     type: "directory",
                     contents: {
-                        "biointelligence.txt": {
+                        "biointellisense.txt": {
                             type: "file",
-                            content: `BIOINTELLIGENCE, INC.
+                            content: `BIOINTELLISENSE, INC.
 Software Engineer | Aug 2024 - Present
 
 COMPANY OVERVIEW:

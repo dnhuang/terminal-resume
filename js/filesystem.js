@@ -24,11 +24,33 @@ class FileSystem {
 
     // List directory contents
     listDirectory(path = null) {
-        const targetPath = path || this.currentPath;
+        let targetPath;
+        
+        if (!path) {
+            targetPath = this.currentPath;
+        } else if (path.startsWith('/')) {
+            // Absolute path
+            targetPath = path;
+        } else {
+            // Relative path
+            if (this.currentPath === '/') {
+                targetPath = '/' + path;
+            } else {
+                targetPath = this.currentPath + '/' + path;
+            }
+        }
+        
+        // Normalize the path
+        targetPath = this.normalizePath(targetPath);
+        
         const dir = this.getDirectoryAtPath(targetPath);
         
-        if (!dir || dir.type !== 'directory') {
-            return { error: `ls: cannot access '${targetPath}': No such file or directory` };
+        if (!dir) {
+            return { error: `ls: cannot access '${path || targetPath}': No such file or directory` };
+        }
+        
+        if (dir.type !== 'directory') {
+            return { error: `ls: cannot access '${path || targetPath}': Not a directory` };
         }
 
         const contents = [];
@@ -123,14 +145,17 @@ class FileSystem {
             // Absolute path
             filePath = filename;
         } else {
-            // Relative path - look in current directory
-            const currentDir = this.getCurrentDirectory();
-            if (!currentDir || !currentDir.contents || !currentDir.contents[filename]) {
-                return { error: `cat: ${filename}: No such file or directory` };
+            // Relative path - can include subdirectories
+            if (this.currentPath === '/') {
+                filePath = '/' + filename;
+            } else {
+                filePath = this.currentPath + '/' + filename;
             }
-            filePath = this.currentPath === '/' ? `/${filename}` : `${this.currentPath}/${filename}`;
         }
 
+        // Normalize the path
+        filePath = this.normalizePath(filePath);
+        
         const file = this.getDirectoryAtPath(filePath);
         
         if (!file) {
@@ -203,8 +228,40 @@ class FileSystem {
     getCompletions(input, commandsList = []) {
         const completions = [];
         
-        // If input contains a path separator, complete file/directory names
-        if (input.includes('/') || (!input.includes(' ') && input.length > 0)) {
+        // Handle path completion
+        if (input.includes('/')) {
+            // Path with directory separator
+            const pathParts = input.split('/');
+            const partialName = pathParts.pop();
+            const dirPath = pathParts.join('/');
+            
+            let targetPath;
+            if (input.startsWith('/')) {
+                // Absolute path
+                targetPath = '/' + dirPath;
+            } else {
+                // Relative path
+                if (this.currentPath === '/') {
+                    targetPath = dirPath ? '/' + dirPath : '/';
+                } else {
+                    targetPath = dirPath ? this.currentPath + '/' + dirPath : this.currentPath;
+                }
+            }
+            
+            targetPath = this.normalizePath(targetPath);
+            const targetDir = this.getDirectoryAtPath(targetPath);
+            
+            if (targetDir && targetDir.type === 'directory' && targetDir.contents) {
+                for (const [name, item] of Object.entries(targetDir.contents)) {
+                    if (name.startsWith(partialName)) {
+                        const completion = item.type === 'directory' ? `${name}/` : name;
+                        const fullPath = dirPath ? `${dirPath}/${completion}` : completion;
+                        completions.push(fullPath);
+                    }
+                }
+            }
+        } else {
+            // Simple filename completion in current directory
             const currentDir = this.getCurrentDirectory();
             if (currentDir && currentDir.contents) {
                 for (const [name, item] of Object.entries(currentDir.contents)) {
@@ -214,12 +271,12 @@ class FileSystem {
                     }
                 }
             }
-        }
-        
-        // Complete command names
-        for (const command of commandsList) {
-            if (command.startsWith(input)) {
-                completions.push(command);
+            
+            // Complete command names
+            for (const command of commandsList) {
+                if (command.startsWith(input)) {
+                    completions.push(command);
+                }
             }
         }
         

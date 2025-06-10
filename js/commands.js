@@ -97,7 +97,8 @@ class Commands {
 
     // LS command - list directory contents
     async ls(args, element) {
-        const result = this.filesystem.listDirectory();
+        const targetPath = args.length > 0 ? args[0] : null;
+        const result = this.filesystem.listDirectory(targetPath);
         
         if (result.error) {
             await this.typewriter.typeCommandOutput(result.error, element, true);

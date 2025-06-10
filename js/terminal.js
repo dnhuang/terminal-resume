@@ -287,7 +287,7 @@ class Terminal {
         });
 
         // Display welcome message instantly
-        const welcomeText = `Welcome to Daniel's terminal portfolio!
+        const welcomeText = `Welcome to Daniel's terminal resume!
 
 Type 'help' to see available commands or 'resume' for a quick overview.
 Navigate through the filesystem with 'ls', 'cd', and 'cat' commands.
