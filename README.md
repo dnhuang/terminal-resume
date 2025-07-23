@@ -19,34 +19,34 @@ Open `index.html` in your browser. Type `help` to see commands.
 
 ### ⌨️ Commands
 
-#### Getting Around
+#### Navigation 
 ```bash
 ls                    # See what's in the current folder
-ls education          # Check out my education folder
-cd education          # Jump into the education directory
-cd ..                 # Go back up
-cat about.txt         # Read my about file
-cat education/uc-berkeley.txt  # Dive into my Berkeley experience
-pwd                   # Where am I right now?
+ls <folder>           # Check out a specific folder
+cd <folder>           # Jump into a directory
+cd ..                 # Go back up one level
+cat <file.txt>        # Read a file
+cat <folder>/<file.txt>  # Show file in a subdirectory
+pwd                   # Present working directory
 tree                  # See the whole file structure
 ```
 
-#### Learning About Me
+#### Resume Commands 
 ```bash
-resume                # Get the full overview of my background
-whoami                # Who am I? (spoiler: I'm Daniel!)
-help                  # Show all the commands you can use
+resume                # Background overview 
+whoami                # daniel 
+help                  # Show all available commands 
 ```
 
-#### Handy Utilities
+#### Utilities
 ```bash
 clear                 # Clean up the screen
 history               # See what commands you've used
-linkedin              # Jump to my LinkedIn profile
-github                # Check out my GitHub repos
+linkedin              # Open LinkedIn profile 
+github                # Open GitHub profile 
 ```
 
-### 🎯 Additional Features
+### Additional Features
 - **Command History**: Use up/down arrows to cycle through previous commands
 - **Tab Completion**: Autocompletes paths and commands 
 - **Keyboard Shortcuts**:
